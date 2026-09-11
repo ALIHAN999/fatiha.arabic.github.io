@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Слово عَلَيْهِمْ — Простой разбор для начинающих</title>
+
+  <!-- Шрифты: Noto Naskh Arabic и Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --primary: #0f766e;
+      --primary-light: #ccfbf1;
+      --border-color: #e2e8f0;
+      --accent-bg: #fef3c7;
+      --accent-border: #f59e0b;
+      --accent-text: #92400e;
+      --blue-bg: #e0f2fe;
+      --blue-text: #0369a1;
+      --green-bg: #f0fdf4;
+      --green-text: #166534;
+      --part-prep: #0284c7;
+      --part-pronoun: #7c3aed;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.5;
+      padding-bottom: 40px;
+    }
+
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    .top-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 6px 12px;
+      border-radius: 8px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+    }
+
+    .back-btn:active {
+      background: var(--primary-light);
+    }
+
+    .ayah-indicator {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Главная карточка */
+    .hero-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 24px 20px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+      margin-bottom: 16px;
+    }
+
+    .arabic-hero {
+      direction: rtl;
+      font-family: 'Noto Naskh Arabic', serif;
+      font-size: 3.4rem;
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+
+    .transcription {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    .meaning {
+      font-size: 1rem;
+      color: var(--text-muted);
+    }
+
+    /* Секции */
+    .section-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 18px 16px;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Адаптивная сетка формулы */
+    .math-formula {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+      align-items: start;
+      gap: 4px;
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 14px 6px;
+      margin-bottom: 14px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .math-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 0;
+      width: 100%;
+    }
+
+    .math-arabic {
+      direction: rtl;
+      font-family: 'Noto Naskh Arabic', serif;
+      font-size: clamp(1.2rem, 4.5vw, 1.65rem);
+      font-weight: 700;
+      line-height: 1.2;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 100%;
+      white-space: nowrap;
+    }
+
+    .math-label {
+      font-size: clamp(0.62rem, 2.2vw, 0.72rem);
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-top: 4px;
+      line-height: 1.2;
+      text-align: center;
+      width: 100%;
+      overflow-wrap: break-word;
+    }
+
+    .math-sign {
+      font-size: clamp(0.9rem, 3vw, 1.2rem);
+      font-weight: 700;
+      color: #94a3b8;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      padding: 0 1px;
+    }
+
+    /* Блок фразы */
+    .phrase-box {
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 16px 12px;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .phrase-arabic {
+      direction: rtl;
+      font-family: 'Noto Naskh Arabic', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    .phrase-meaning {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .phrase-meaning strong {
+      color: var(--text-main);
+    }
+
+    /* Шаги */
+    .steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .step-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 10px;
+      border-radius: 10px;
+      background: #f8fafc;
+    }
+
+    .step-badge {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    .step-content {
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    .arabic-inline {
+      direction: rtl;
+      font-family: 'Noto Naskh Arabic', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 0 2px;
+    }
+
+    .nowrap {
+      white-space: nowrap;
+    }
+
+    /* Q&A карточки */
+    .qa-box {
+      border-left: 3px solid var(--primary);
+      background: var(--green-bg);
+      padding: 10px 12px;
+      border-radius: 0 10px 10px 0;
+      margin-bottom: 10px;
+      font-size: 0.88rem;
+    }
+
+    .qa-question {
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    .qa-answer {
+      color: #334155;
+      line-height: 1.4;
+    }
+
+    /* Подсказки */
+    .phonetic-card {
+      background: var(--blue-bg);
+      border: 1px solid #bae6fd;
+      border-radius: 14px;
+      padding: 14px;
+      font-size: 0.85rem;
+      line-height: 1.45;
+      color: var(--blue-text);
+      margin-bottom: 14px;
+    }
+
+    .phonetic-card strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.9rem;
+    }
+
+    .tip-card {
+      background: var(--accent-bg);
+      border: 1px solid var(--accent-border);
+      border-radius: 14px;
+      padding: 14px;
+      font-size: 0.85rem;
+      line-height: 1.45;
+      color: var(--accent-text);
+      margin-bottom: 16px;
+    }
+
+    .tip-card strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.9rem;
+    }
+
+    /* Навигация между словами */
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .nav-link {
+      flex: 1;
+      text-align: center;
+      padding: 12px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.88rem;
+      border: 1px solid var(--border-color);
+      background: var(--card-bg);
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-link.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Навигация наверх -->
+    <div class="top-nav">
+      <a href="index.html" class="back-btn">← К суре</a>
+      <span class="ayah-indicator">Аят 7 • Слово 4</span>
+    </div>
+
+    <!-- Заглавный блок -->
+    <header class="hero-card">
+      <div class="arabic-hero">عَلَيْهِمْ</div>
+      <div class="transcription">‘Аляйхим</div>
+      <div class="meaning">«На них» / «В отношении них»</div>
+    </header>
+
+    <!-- Из чего состоит слово -->
+    <section class="section-card">
+      <h2 class="section-title">🔍 Из чего состоит связка?</h2>
+      
+      <div class="math-formula">
+        <div class="math-item">
+          <div class="math-arabic" style="color: var(--part-prep);">عَلَى</div>
+          <div class="math-label">Предлог «на»</div>
+        </div>
+        <div class="math-sign">+</div>
+        <div class="math-item">
+          <div class="math-arabic" style="color: var(--part-pronoun);">هِمْ</div>
+          <div class="math-label">Их / них</div>
+        </div>
+        <div class="math-sign">=</div>
+        <div class="math-item">
+          <div class="math-arabic" style="color: var(--primary);">عَلَيْهِمْ</div>
+          <div class="math-label">«На них»</div>
+        </div>
+      </div>
+
+      <div class="steps-list">
+        <div class="step-item">
+          <div class="step-badge">1</div>
+          <div class="step-content">
+            <span class="arabic-inline">عَلَى</span> (‘Аля́) — обычный арабский предлог <strong>«на»</strong> или <strong>«над»</strong>. При слиянии с местоимением его укороченный алиф (<span class="arabic-inline">ى</span>) раскрывается в полноценную букву Йа с сукуном: <span class="nowrap"><strong>«‘аляй-»</strong></span>.
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-badge">2</div>
+          <div class="step-content">
+            <span class="arabic-inline">هِمْ</span> (Хим) — слитное местоимение 3-го лица множественного числа: <strong>«они / их»</strong>.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Почему «хим», а не «хум»? -->
+    <section class="section-card">
+      <h2 class="section-title">❓ Почему «-хим», а не «-хум»?</h2>
+      
+      <div class="phrase-box">
+        <div class="phrase-arabic">أَنْعَمْتَ عَلَيْهِمْ</div>
+        <div class="phrase-meaning">Ты облагодетельствовал → <strong>их</strong></div>
+      </div>
+
+      <div class="qa-box">
+        <div class="qa-question">Гармония гласных звуков:</div>
+        <div class="qa-answer">
+          В изолированном виде местоимение звучит как <span class="arabic-inline">هُمْ</span> (<em>-хум</em> с даммой). Однако когда перед ним оказывается буква <span class="arabic-inline">يْ</span> (Йа с сукуном), арабскому речевому аппарату легче произнести кясру: звук автоматически смягчается на <span class="nowrap"><em>«-х<strong style="color: var(--primary);">и</strong>м»</em></span>: <span class="nowrap"><strong>‘Аляйхим</strong></span>.
+        </div>
+      </div>
+    </section>
+
+    <!-- Кто эти люди? -->
+    <div class="tip-card">
+      <strong>💡 О ком идёт речь в этих словах?</strong>
+      В суре «Ан-Ниса» (4:69) Коран сам даёт прямой ответ на то, кто такие <em>«те, кого Аллах облагодетельствовал»</em>: это четыре благородные категории людей — <b>пророки, искренние праведники (сыддикун), павшие за веру мученики (шухада) <br>и благочестивые деятели (салихун)</b>.
+    </div>
+
+    <!-- Навигация между словами -->
+    <div class="nav-buttons">
+      <a href="an'amta.html" class="nav-link">← 7:3. أَنْعَمْتَ</a>
+      <a href="goyri.html" class="nav-link active">7:5. غَيْرِ →</a>
+    </div>
+
+  </div>
+
+</body>
+</html>
