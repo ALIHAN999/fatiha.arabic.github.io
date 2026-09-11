@@ -10,7 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Naskh+Arabic:wght@500;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@500;700&display=swap" rel="stylesheet">
-
+  <!-- VK Bridge SDK -->
+  <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
 
   <style>
     :root {
@@ -294,4 +295,32 @@
 
 
 </body>
+  
+<script>
+  // Инициализация VK Bridge
+  if (window.vkBridge) {
+    vkBridge.send('VKWebAppInit')
+      .then(() => {
+        console.log('VK Mini App успешно инициализирован');
+      })
+      .catch((error) => {
+        console.error('Ошибка инициализации VK Bridge:', error);
+      });
+
+    // Опционально: скрытие стрелки "Назад" или обработка истории
+    // Для мобильных клиентов можно подписаться на аппаратную кнопку назад на Android:
+    vkBridge.subscribe((e) => {
+      if (e.detail.type === 'VKWebAppBackButtonPressed') {
+        if (window.location.pathname.endsWith('index.html') || window.location.pathname === '/') {
+          // Если на главной — закрываем сервис
+          vkBridge.send('VKWebAppClose', { status: 'success' });
+        } else {
+          // Если внутри разбора слова — возвращаемся назад
+          window.history.length > 1 ? window.history.back() : window.location.href = '../index.html';
+        }
+      }
+    });
+  }
+</script>
+  
 </html>
