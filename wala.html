@@ -357,6 +357,59 @@
       color: #ffffff;
       border-color: var(--primary);
     }
+
+    /* Стандартизация транскрипции с макронами */
+    .transcription {
+      font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+      font-feature-settings: "liga" 1, "calt" 1;
+      text-rendering: optimizeLegibility;
+    }
+    
+    /* Адаптивные медиа-запросы для мониторов (Desktop / Tablet) */
+    @media (min-width: 768px) {
+      .container {
+        max-width: 780px;
+        padding: 32px 24px 60px;
+      }
+      .hero-card {
+        padding: 36px 32px;
+        border-radius: 24px;
+        margin-bottom: 24px;
+      }
+      .arabic-hero {
+        font-size: 4.5rem;
+      }
+      .transcription {
+        font-size: 1.45rem;
+      }
+      .meaning {
+        font-size: 1.15rem;
+      }
+      .section-card {
+        padding: 24px 22px;
+        border-radius: 20px;
+        margin-bottom: 18px;
+      }
+      .section-title {
+        font-size: 1.2rem;
+      }
+      .phrase-arabic {
+        font-size: 2.3rem;
+      }
+      .math-arabic {
+        font-size: 2.2rem;
+        height: 52px;
+      }
+      .math-sign {
+        font-size: 1.6rem;
+        height: 52px;
+      }
+      .nav-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(15, 118, 110, 0.12);
+      }
+    }
+    
   </style>
 </head>
 <body>
