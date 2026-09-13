@@ -5,10 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Слово ٱلرَّحِيمِ — Простой разбор для начинающих</title>
 
-  <!-- Шрифты: Noto Naskh Arabic и Inter -->
+  <!-- Шрифты: Manrope и Noto Naskh Arabic -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@500;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@500;700&display=swap" rel="stylesheet">
 
   <style>
@@ -69,6 +68,7 @@
       border-radius: 8px;
       background: var(--card-bg);
       border: 1px solid var(--border-color);
+      transition: background 0.15s ease;
     }
 
     .back-btn:active {
@@ -230,39 +230,29 @@
       line-height: 1.4;
     }
 
-    /* Карточки подсказок */
-    .phonetic-card {
-      background: var(--blue-bg);
-      border: 1px solid #bae6fd;
-      border-radius: 14px;
-      padding: 14px;
-      font-size: 0.85rem;
-      line-height: 1.45;
-      color: var(--blue-text);
-      margin-bottom: 14px;
+    /* Карточки причин */
+    .reason-box {
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 8px;
     }
 
-    .phonetic-card strong {
-      display: block;
-      margin-bottom: 4px;
+    .reason-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
       font-size: 0.9rem;
-    }
-
-    .tip-card {
-      background: var(--accent-bg);
-      border: 1px solid var(--accent-border);
-      border-radius: 14px;
-      padding: 14px;
-      font-size: 0.85rem;
-      line-height: 1.45;
-      color: var(--accent-text);
-      margin-bottom: 16px;
-    }
-
-    .tip-card strong {
-      display: block;
+      color: var(--primary);
       margin-bottom: 4px;
-      font-size: 0.9rem;
+    }
+
+    .reason-text {
+      font-size: 0.85rem;
+      color: #334155;
+      line-height: 1.45;
     }
 
     /* Навигация между словами */
@@ -287,12 +277,50 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
     .nav-link.active {
       background: var(--primary);
       color: #ffffff;
       border-color: var(--primary);
+    }
+
+    /* Адаптация под мониторы */
+    @media (min-width: 768px) {
+      .container {
+        max-width: 780px;
+        padding: 32px 24px 60px;
+      }
+      .hero-card {
+        padding: 36px 32px;
+        border-radius: 24px;
+        margin-bottom: 24px;
+      }
+      .arabic-hero {
+        font-size: 4.5rem;
+      }
+      .transcription {
+        font-size: 1.45rem;
+      }
+      .meaning {
+        font-size: 1.15rem;
+      }
+      .section-card {
+        padding: 24px 22px;
+        border-radius: 20px;
+        margin-bottom: 18px;
+      }
+      .section-title {
+        font-size: 1.2rem;
+      }
+      .phrase-arabic {
+        font-size: 2.3rem;
+      }
+      .nav-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(15, 118, 110, 0.12);
+      }
     }
   </style>
 </head>
@@ -309,7 +337,7 @@
     <!-- Заглавный блок -->
     <header class="hero-card">
       <div class="arabic-hero">ٱلرَّحِيمِ</div>
-      <div class="transcription">Ар-Рахи́ми</div>
+      <div class="transcription">Ар-Рахӣми</div>
       <div class="meaning">«Милосердному»</div>
     </header>
 
@@ -326,13 +354,13 @@
         <div class="step-item">
           <div class="step-badge">1</div>
           <div class="step-content">
-            Это слово завершает 3-й аят и служит очередным описанием (<em>Сыфат</em>) к Имени Аллаха из 2-го аята: <em>«Хвала Аллаху... Милостивому, [а также] Милосердному»</em>.
+            Это слово завершает 3-й аят и служит очередным описанием (<em>Сыфат</em>) к Имени Аллаха из 2-го аята: <em>«Хвала Аллаху... Милостивому, [а также] Милосердному»</em>[cite: 6].
           </div>
         </div>
         <div class="step-item">
           <div class="step-badge">2</div>
           <div class="step-content">
-            Оно следует сразу за именем <span class="arabic-inline">ٱلرَّحْمَانِ</span>, создавая гармоничную пару качеств: безграничную полноту милости и её постоянную заботу о творениях.
+            Оно следует сразу за именем <span class="arabic-inline">ٱلرَّحْمَانِ</span>, создавая гармоничную пару качеств: всеобъемлющую полноту милости и её постоянную заботу о творениях[cite: 6].
           </div>
         </div>
       </div>
@@ -345,7 +373,26 @@
       <div class="qa-box">
         <div class="qa-question">Единая грамматическая цепь:</div>
         <div class="qa-answer">
-          Так как все описания в этой части суры относятся к слову <span class="arabic-inline">لِلَّهِ</span>, стоящему <br>в положении кясры, то и слово <span class="arabic-inline">ٱلرَّحِيمِ</span> сохраняет окончание <strong>кясра ( ـِ )</strong>: <span class="nowrap"><em>«Ар-Рахим<strong style="color: var(--primary);">и</strong>»</em></span>.
+          Так как все описания в этой части суры относятся к слову <span class="arabic-inline">لِلَّهِ</span>, стоящему в родительном падеже (кясра), то и слово <span class="arabic-inline">ٱلرَّحِيمِ</span> полностью наследует окончание <strong>кясра ( ـِ )</strong>: <span class="nowrap"><em>«Ар-Рахӣм<strong style="color: var(--primary);">и</strong>»</em></span>.
+        </div>
+      </div>
+    </section>
+
+    <!-- Почему нет танвина? -->
+    <section class="section-card">
+      <h2 class="section-title">🚫 Почему нет танвина (-ин / -ун)?</h2>
+      
+      <div class="reason-box">
+        <div class="reason-header">Правило несовместимости с артиклем (الـ)</div>
+        <div class="reason-text">
+          Слово начинается с определённого артикля <span class="arabic-inline">الـ</span>. В арабской грамматике артикль определённости и танвин (маркер неопределённости) взаимоисключают друг друга. Присоединение артикля <span class="arabic-inline">الـ</span> снимает танвин, поэтому пишется одинарная кясра: <span class="arabic-inline">ٱلرَّحِيمِ</span> вместо неопределённого <span class="arabic-inline">رَحِيمٍ</span> (<em>рахӣмин</em>).
+        </div>
+      </div>
+
+      <div class="reason-box">
+        <div class="reason-header">Сравнение с ٱلرَّحْمَانِ</div>
+        <div class="reason-text">
+          Основа слова <span class="arabic-inline">رَحِيم</span> является обычным трёхпадежным именем и без артикля вполне принимает танвин (<em>рахӣмун</em>). Здесь танвин отсутствует <strong>исключительно из-за артикля <span class="arabic-inline">الـ</span></strong>, тогда как в предшествующем слове <span class="arabic-inline">رَحْمَان</span> танвин невозможен ещё и по причине диптотной словообразовательной формы (*мамну‘ мин ас-сарф*).
         </div>
       </div>
     </section>
