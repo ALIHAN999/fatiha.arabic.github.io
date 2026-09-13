@@ -5,10 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Слово ٱلرَّحْمَانِ — Простой разбор для начинающих</title>
 
-  <!-- Шрифты: Noto Naskh Arabic и Inter -->
+  <!-- Шрифты: Manrope и Noto Naskh Arabic -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@500;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@500;700&display=swap" rel="stylesheet">
   
   <style>
@@ -69,6 +68,7 @@
       border-radius: 8px;
       background: var(--card-bg);
       border: 1px solid var(--border-color);
+      transition: background 0.15s ease;
     }
 
     .back-btn:active {
@@ -231,25 +231,32 @@
       line-height: 1.4;
     }
 
-    /* Фонетическая карточка */
-    .phonetic-card {
-      background: var(--blue-bg);
-      border: 1px solid #bae6fd;
-      border-radius: 14px;
-      padding: 14px;
-      font-size: 0.85rem;
-      line-height: 1.45;
-      color: var(--blue-text);
-      margin-bottom: 14px;
+    /* Карточки причин */
+    .reason-box {
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 8px;
     }
 
-    .phonetic-card strong {
-      display: block;
-      margin-bottom: 4px;
+    .reason-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
       font-size: 0.9rem;
+      color: var(--primary);
+      margin-bottom: 4px;
     }
 
-    /* Карточка секрета */
+    .reason-text {
+      font-size: 0.85rem;
+      color: #334155;
+      line-height: 1.45;
+    }
+
+    /* Подсказки */
     .tip-card {
       background: var(--accent-bg);
       border: 1px solid var(--accent-border);
@@ -289,12 +296,50 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
     .nav-link.active {
       background: var(--primary);
       color: #ffffff;
       border-color: var(--primary);
+    }
+
+    /* Адаптация под мониторы */
+    @media (min-width: 768px) {
+      .container {
+        max-width: 780px;
+        padding: 32px 24px 60px;
+      }
+      .hero-card {
+        padding: 36px 32px;
+        border-radius: 24px;
+        margin-bottom: 24px;
+      }
+      .arabic-hero {
+        font-size: 4.5rem;
+      }
+      .transcription {
+        font-size: 1.45rem;
+      }
+      .meaning {
+        font-size: 1.15rem;
+      }
+      .section-card {
+        padding: 24px 22px;
+        border-radius: 20px;
+        margin-bottom: 18px;
+      }
+      .section-title {
+        font-size: 1.2rem;
+      }
+      .phrase-arabic {
+        font-size: 2.2rem;
+      }
+      .nav-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(15, 118, 110, 0.12);
+      }
     }
   </style>
 </head>
@@ -311,7 +356,7 @@
     <!-- Заглавный блок -->
     <header class="hero-card">
       <div class="arabic-hero">ٱلرَّحْمَانِ</div>
-      <div class="transcription">Ар-Рахма́ни</div>
+      <div class="transcription">Ар-Рахма̄ни</div>
       <div class="meaning">«Милостивому» (Всемилостивому)</div>
     </header>
 
@@ -328,13 +373,13 @@
         <div class="step-item">
           <div class="step-badge">1</div>
           <div class="step-content">
-            Хотя это слово начинает новый 3-й аят, по смыслу и грамматике оно является прямым продолжением 2-го аята: это <strong>очередное описание</strong> (<em>Сыфат</em>) к слову <span class="arabic-inline">لِلَّهِ</span>.
+            Хотя это слово начинает новый 3-й аят, по грамматической структуре оно остаётся прямым продолжением 2-го аята: это <strong>очередное описание</strong> (<em>Сыфат</em>) к имени <span class="arabic-inline">لِلَّهِ</span>[cite: 5].
           </div>
         </div>
         <div class="step-item">
           <div class="step-badge">2</div>
           <div class="step-content">
-            Мысль продолжается: <em>«Хвала Аллаху, Господу миров, [Который является] Милостивым...»</em>
+            Смысловая цепочка не прерывается: <em>«Хвала Аллаху, Господу миров, [Который является] Милостивым...»</em>[cite: 5]
           </div>
         </div>
       </div>
@@ -347,12 +392,35 @@
       <div class="qa-box">
         <div class="qa-question">Сохранение падежа через границу аята:</div>
         <div class="qa-answer">
-          Так как описываемое имя <span class="arabic-inline">لِلَّهِ</span> стояло <br>с огласовкой кясра (<em>Ли-Ллях<span class="nowrap" style="color: var(--primary); font-weight: 700;">и</span></em>), <br>то и связанное с ним слово <span class="arabic-inline">ٱلرَّحْمَانِ</span> наследует эту же огласовку: <span class="nowrap"><em>«Ар-Рахмāн<strong style="color: var(--primary);">и</strong>»</em></span>.
+          Так как описываемое имя <span class="arabic-inline">لِلَّهِ</span> стоит в родительном падеже с огласовкой кясра (<em>Ли-Лля̄х<span class="nowrap" style="color: var(--primary); font-weight: 700;">и</span></em>), то и следующее за ним определение <span class="arabic-inline">ٱلرَّحْمَانِ</span> наследует эту же огласовку: <span class="nowrap"><em>«Ар-Рахма̄н<strong style="color: var(--primary);">и</strong>»</em></span>.
         </div>
       </div>
     </section>
 
-   
+    <!-- Почему нет танвина? -->
+    <section class="section-card">
+      <h2 class="section-title">🚫 Почему нет танвина (-ин / -ун)?</h2>
+      
+      <div class="reason-box">
+        <div class="reason-header">Причина 1 • Определённый артикль (الـ)</div>
+        <div class="reason-text">
+          Слово оформлено артиклем определённости <span class="arabic-inline">الـ</span>. В арабском языке артикль и танвин взаимно исключают друг друга: появление <span class="arabic-inline">الـ</span> немедленно отменяет танвин, оставляя простую одинарную огласовку (кясру).
+        </div>
+      </div>
+
+      <div class="reason-box">
+        <div class="reason-header">Причина 2 • Особая форма слова (Мамну‘ мин ас-сарф)</div>
+        <div class="reason-text">
+          Основа <span class="arabic-inline">رَحْمَان</span> построена по морфологической модели <span class="arabic-inline">فَعْلَان</span> (<em>фа‘ля̄н</em>). Такие имена принадлежат к категории диптотов (полусклоняемых слов) — они <strong>в принципе не принимают танвин</strong> ни при каких условиях, даже в неопределённом состоянии без артикля.
+        </div>
+      </div>
+    </section>
+
+    <!-- Напоминание об алифе -->
+    <div class="tip-card">
+      <strong>💡 Написание долготы «а»:</strong>
+      В современном тексте долгий гласный передан буквой <span class="arabic-inline">ا</span> (Алиф), а в классическом кораническом свитке обозначается маленьким надстрочным вертикальным алифом: <span class="arabic-inline">ٱلرَّحْمَٰنِ</span>.
+    </div>
 
     <!-- Навигация между словами -->
     <div class="nav-buttons">
