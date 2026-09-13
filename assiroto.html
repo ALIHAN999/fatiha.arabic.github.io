@@ -5,10 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Слово ٱلصِّرَاطَ — Простой разбор для начинающих</title>
 
-  <!-- Шрифты: Noto Naskh Arabic и Inter -->
+  <!-- Шрифты: Manrope и Noto Naskh Arabic -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@500;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@500;700&display=swap" rel="stylesheet">
 
   <style>
@@ -71,6 +70,7 @@
       border-radius: 8px;
       background: var(--card-bg);
       border: 1px solid var(--border-color);
+      transition: background 0.15s ease;
     }
 
     .back-btn:active {
@@ -284,24 +284,32 @@
       line-height: 1.4;
     }
 
-    /* Подсказки */
-    .phonetic-card {
-      background: var(--blue-bg);
-      border: 1px solid #bae6fd;
-      border-radius: 14px;
-      padding: 14px;
-      font-size: 0.85rem;
-      line-height: 1.45;
-      color: var(--blue-text);
-      margin-bottom: 14px;
+    /* Карточки причин */
+    .reason-box {
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 8px;
     }
 
-    .phonetic-card strong {
-      display: block;
-      margin-bottom: 4px;
+    .reason-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
       font-size: 0.9rem;
+      color: var(--primary);
+      margin-bottom: 4px;
     }
 
+    .reason-text {
+      font-size: 0.85rem;
+      color: #334155;
+      line-height: 1.45;
+    }
+
+    /* Подсказки */
     .tip-card {
       background: var(--accent-bg);
       border: 1px solid var(--accent-border);
@@ -341,12 +349,55 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
     .nav-link.active {
       background: var(--primary);
       color: #ffffff;
       border-color: var(--primary);
+    }
+
+    /* Адаптация под мониторы */
+    @media (min-width: 768px) {
+      .container {
+        max-width: 780px;
+        padding: 32px 24px 60px;
+      }
+      .hero-card {
+        padding: 36px 32px;
+        border-radius: 24px;
+        margin-bottom: 24px;
+      }
+      .arabic-hero {
+        font-size: 4.5rem;
+      }
+      .transcription {
+        font-size: 1.45rem;
+      }
+      .meaning {
+        font-size: 1.15rem;
+      }
+      .section-card {
+        padding: 24px 22px;
+        border-radius: 20px;
+        margin-bottom: 18px;
+      }
+      .section-title {
+        font-size: 1.2rem;
+      }
+      .math-arabic {
+        font-size: 2.2rem;
+        height: 52px;
+      }
+      .math-sign {
+        font-size: 1.6rem;
+        height: 52px;
+      }
+      .nav-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(15, 118, 110, 0.12);
+      }
     }
   </style>
 </head>
@@ -363,7 +414,7 @@
     <!-- Заглавный блок -->
     <header class="hero-card">
       <div class="arabic-hero">ٱلصِّرَاطَ</div>
-      <div class="transcription">Ас-Сыра́та</div>
+      <div class="transcription">Ас-Сыра̄та</div>
       <div class="meaning">«Путь» / «Прямой тракт»</div>
     </header>
 
@@ -395,7 +446,13 @@
             <span class="arabic-inline">ٱلـ</span> (Аль) — определённый артикль. Он указывает не на какую-то случайную тропу, а на <strong>тот самый, единственный истинный Путь</strong>.
           </div>
         </div>
-        
+        <div class="step-item">
+          <div class="step-badge">2</div>
+          <div class="step-content">
+            <span class="arabic-inline">صِرَاط</span> (Сыра̄т) — имя существительное мужского рода со значением широкой, ясной и прямой дороги.
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Почему на конце фатха (звук 'а')? -->
@@ -410,10 +467,23 @@
       <div class="qa-box">
         <div class="qa-question">Второе прямое дополнение (Маф‘уль бихи):</div>
         <div class="qa-answer">
-          Глагол <span class="arabic-inline">ٱهْدِ</span> («Веди / наставь») <br>в арабском языке особенный — он соединяет сразу два дополнения без предлогов: 
-          1) <em>кого?</em> — нас (<span class="arabic-inline">ـنَا</span>); 
-          <br>2) <em>к чему / куда?</em> — Путь (<span class="arabic-inline">ٱلصِّرَاطَ</span>). 
-          <br>Так как действие падает прямо на это слово, оно стоит в винительном падеже (<em>мансуб</em>) с огласовкой <br><strong>фатха ( ـَ )</strong> на конце: <span class="nowrap"><em>«Ас-Сырāт<strong style="color: var(--primary);">а</strong>»</em></span>.
+          Глагол <span class="arabic-inline">ٱهْدِ</span> («Веди / наставь») в арабском языке особенный — он соединяет сразу два дополнения без предлогов: 
+          1) <em>кого?</em> — нас (<span class="arabic-inline">ـنَا</span>)[cite: 7]; 
+          <br>2) <em>к чему / куда?</em> — Путь (<span class="arabic-inline">ٱلصِّرَاطَ</span>)[cite: 7]. 
+          <br>Так как действие падает прямо на это слово, оно стоит в винительном падеже (<em>мансуб</em>) с огласовкой <strong>фатха ( ـَ )</strong> на конце: <span class="nowrap"><em>«Ас-Сыра̄т<strong style="color: var(--primary);">а</strong>»</em></span>.
+        </div>
+      </div>
+    </section>
+
+    <!-- Почему нет танвина? -->
+    <section class="section-card">
+      <h2 class="section-title">🚫 Почему нет танвина (-ан)?</h2>
+      
+      <div class="reason-box">
+        <div class="reason-header">Правило несовместимости с артиклем (الـ)</div>
+        <div class="reason-text">
+          Само по себе слово <span class="arabic-inline">صِرَاط</span> в винительном падеже без артикля оканчивается на танвин-фатху: <span class="arabic-inline">صِرَاطًا</span> (<em>сыра̄тан</em> — «какой-то путь/дорогу»).<br><br>
+          Однако артикль <span class="arabic-inline">الـ</span> и танвин в грамматике арабского языка <strong>никогда не соединяются вместе</strong>. Артикль определённости отменяет нунацию, поэтому пишется одинарная фатха — <span class="arabic-inline">ٱلصِّرَاطَ</span> (<em>ас-сыра̄та</em>).
         </div>
       </div>
     </section>
@@ -421,7 +491,7 @@
     <!-- Тонкость слова Сырат -->
     <div class="tip-card">
       <strong>💡 Почему именно «Сыра́т», а не другое слово?</strong>
-      В арабском языке есть слова <em>«тарик»</em> (любая дорога) и <em>«сабиль»</em> (тропа, путь). Но слово <b>«Сырат»</b> имеет особенное значение: <br>это <b>широкая, прямая, главная магистраль</b>, которая ведёт прямо к цели, без тупиков, крутых поворотов и опасных развилок.
+      В арабском языке есть слова <em>«тарик»</em> (любая дорога) и <em>«сабиль»</em> (тропа, путь). Но слово <b>«Сырат»</b> имеет особенное значение: это <b>широкая, прямая, главная магистраль</b>, которая ведёт прямо к цели, без тупиков, крутых поворотов и опасных развилок.
     </div>
 
     <!-- Навигация между словами -->
