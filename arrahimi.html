@@ -5,10 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Слово ٱلرَّحِيمِ — Простой разбор для начинающих</title>
 
-  <!-- Шрифты: Noto Naskh Arabic и Inter -->
+  <!-- Шрифты: Manrope и Noto Naskh Arabic -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@500;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@500;700&display=swap" rel="stylesheet">
 
   <style>
@@ -25,6 +24,8 @@
       --accent-text: #92400e;
       --blue-bg: #e0f2fe;
       --blue-text: #0369a1;
+      --green-bg: #f0fdf4;
+      --green-text: #166534;
     }
 
     * {
@@ -207,6 +208,31 @@
       white-space: nowrap;
     }
 
+    /* Карточки причин */
+    .reason-box {
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 8px;
+    }
+
+    .reason-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    .reason-text {
+      font-size: 0.85rem;
+      color: #334155;
+      line-height: 1.4;
+    }
+
     /* Сравнение двух имён */
     .compare-grid {
       display: grid;
@@ -239,23 +265,6 @@
     }
 
     /* Карточки подсказок */
-    .phonetic-card {
-      background: var(--blue-bg);
-      border: 1px solid #bae6fd;
-      border-radius: 14px;
-      padding: 14px;
-      font-size: 0.85rem;
-      line-height: 1.45;
-      color: var(--blue-text);
-      margin-bottom: 14px;
-    }
-
-    .phonetic-card strong {
-      display: block;
-      margin-bottom: 4px;
-      font-size: 0.9rem;
-    }
-
     .tip-card {
       background: var(--accent-bg);
       border: 1px solid var(--accent-border);
@@ -302,6 +311,36 @@
       color: #ffffff;
       border-color: var(--primary);
     }
+
+    /* Адаптация под мониторы */
+    @media (min-width: 768px) {
+      .container {
+        max-width: 780px;
+        padding: 32px 24px 60px;
+      }
+      .hero-card {
+        padding: 36px 32px;
+        border-radius: 24px;
+        margin-bottom: 24px;
+      }
+      .arabic-hero {
+        font-size: 4.5rem;
+      }
+      .transcription {
+        font-size: 1.45rem;
+      }
+      .meaning {
+        font-size: 1.15rem;
+      }
+      .section-card {
+        padding: 24px 22px;
+        border-radius: 20px;
+        margin-bottom: 18px;
+      }
+      .section-title {
+        font-size: 1.2rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -317,7 +356,7 @@
     <!-- Заглавный блок -->
     <header class="hero-card">
       <div class="arabic-hero">ٱلرَّحِيمِ</div>
-      <div class="transcription">Ар-Рахи́ми</div>
+      <div class="transcription">Ар-Рахӣми</div>
       <div class="meaning">«Милосердного»</div>
     </header>
 
@@ -334,14 +373,33 @@
         <div class="step-item">
           <div class="step-badge">1</div>
           <div class="step-content">
-            Это <strong>второе описание</strong> (второй сыфат) к слову <span class="arabic-inline">ٱللَّهِ</span>. В арабском языке к одному предмету или имени может примыкать несколько описаний подряд.
+            Это <strong>второе описание</strong> (второй сыфат) к слову <span class="arabic-inline">ٱللَّهِ</span>. В арабском языке к одному имени может примыкать несколько согласованных определений подряд.
           </div>
         </div>
         <div class="step-item">
           <div class="step-badge">2</div>
           <div class="step-content">
-            Как и предыдущее слово, оно полностью повторяет падеж главного имени и получает огласовку <strong>кясра ( ـِ )</strong> на конце: <span class="nowrap"><em>«Ар-Рахим<strong style="color: var(--primary);">и</strong>»</em></span>.
+            Как и предыдущее имя, оно полностью повторяет падеж определяемого слова и получает огласовку <strong>кясра ( ـِ )</strong> на конце: <span class="nowrap"><em>«Ар-Рахӣм<strong style="color: var(--primary);">и</strong>»</em></span>.
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Почему нет танвина? -->
+    <section class="section-card">
+      <h2 class="section-title">🚫 Почему нет танвина (-ин / -ун)?</h2>
+      
+      <div class="reason-box">
+        <div class="reason-header">Правило несовместимости с артиклем (الـ)</div>
+        <div class="reason-text">
+          Слово начинается с определённого артикля <span class="arabic-inline">الـ</span>. В арабской грамматике артикль определённости и танвин (признак неопределённости) являются <strong>взаимоисключающими</strong>. Как только к слову присоединяется <span class="arabic-inline">الـ</span>, танвин исчезает: пишется одинарная огласовка <span class="arabic-inline">ٱلرَّحِيمِ</span> вместо <span class="arabic-inline">رَحِيمٍ</span> (<em>рахӣмин</em>).
+        </div>
+      </div>
+
+      <div class="reason-box">
+        <div class="reason-header">Сравнение с предыдущим словом ٱلرَّحْمَانِ</div>
+        <div class="reason-text">
+          В отличие от слова <span class="arabic-inline">رَحْمَان</span> (которое не принимает танвин из-за своей формы даже без артикля), слово <span class="arabic-inline">رَحِيم</span> в неопределённом состоянии является обычным трёхпадежным именем и танвин принимает (<em>рахӣмун / рахӣман / рахӣмин</em>). Здесь же танвин отсутствует <strong>исключительно из-за наличия артикля <span class="arabic-inline">الـ</span></strong>.
         </div>
       </div>
     </section>
@@ -350,7 +408,7 @@
     <section class="section-card">
       <h2 class="section-title">💡 В чём разница между ними?</h2>
       <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 10px;">
-        Оба имени происходят от одного корня<br> <span class="arabic-inline">ر  - ح - م</span> («милость»), но оттенки их смысла дополняют друг друга:
+        Оба имени происходят от одного корня <span class="arabic-inline">ر - ح - م</span> («милость»), но оттенки их смысла дополняют друг друга:
       </p>
 
       <div class="compare-grid">
@@ -360,7 +418,7 @@
         </div>
         <div class="compare-item">
           <div class="compare-name">ٱلرَّحِيمِ</div>
-          <div class="compare-desc"><strong>Постоянная милость:</strong> непрерывное проявление милосердия (особенно к верующим в День суда).</div>
+          <div class="compare-desc"><strong>Постоянная милость:</strong> непрерывное проявление милосердия (особенно к верующим в Вечной жизни).</div>
         </div>
       </div>
     </section>
@@ -368,7 +426,7 @@
     <!-- Солнечная буква -->
     <div class="tip-card">
       <strong>☀️ Напоминание о солнечной букве:</strong>
-      Буква <span class="arabic-inline">ر</span> (Ра) является солнечной, поэтому звук «Л» в артикле опускается, а буква «Р» удваивается шаддой: читаем <b>«Ар-Рахи́м»,</b> <br>а не «Аль-Рахи́м».
+      Буква <span class="arabic-inline">ر</span> (Ра) является солнечной, поэтому звук «Л» в артикле ассимилируется, а буква «Р» удваивается шаддой: читаем <b>«Ар-Рахӣм»</b>, а не «Аль-Рахӣм».
     </div>
 
     <!-- Навигация -->
