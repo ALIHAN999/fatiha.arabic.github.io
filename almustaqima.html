@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Слово ٱلْمُسْتَقِيمَ — Простой разбор для начинающих</title>
 
+  <!-- Шрифты: Manrope и Noto Naskh Arabic -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@500;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@500;700&display=swap" rel="stylesheet">
 
   <style>
@@ -70,6 +70,7 @@
       border-radius: 8px;
       background: var(--card-bg);
       border: 1px solid var(--border-color);
+      transition: background 0.15s ease;
     }
 
     .back-btn:active {
@@ -131,16 +132,17 @@
       gap: 8px;
     }
 
-    /* АДАПТИВНАЯ СЕТКА ФОРМУЛЫ */
+    /* Адаптивная формула с точным выравниванием */
     .math-formula {
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
       align-items: start;
-      gap: 4px;
+      justify-items: center;
+      gap: 6px;
       background: #f8fafc;
       border: 1px solid var(--border-color);
       border-radius: 14px;
-      padding: 14px 6px;
+      padding: 16px 8px;
       margin-bottom: 14px;
       width: 100%;
       box-sizing: border-box;
@@ -159,8 +161,8 @@
       font-family: 'Noto Naskh Arabic', serif;
       font-size: clamp(1.2rem, 4.5vw, 1.65rem);
       font-weight: 700;
-      line-height: 1.2;
-      height: 40px;
+      line-height: 1;
+      height: 48px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -173,7 +175,7 @@
       font-size: clamp(0.62rem, 2.2vw, 0.72rem);
       font-weight: 600;
       color: var(--text-muted);
-      margin-top: 4px;
+      margin-top: 6px;
       line-height: 1.2;
       text-align: center;
       width: 100%;
@@ -181,15 +183,17 @@
     }
 
     .math-sign {
-      font-size: clamp(0.9rem, 3vw, 1.2rem);
-      font-weight: 700;
+      font-family: 'Manrope', system-ui, sans-serif;
+      font-size: clamp(1.1rem, 3.2vw, 1.4rem);
+      font-weight: 600;
       color: #94a3b8;
-      height: 40px;
+      height: 48px;
       display: flex;
       align-items: center;
       justify-content: center;
       user-select: none;
-      padding: 0 1px;
+      padding: 0 2px;
+      transform: translateY(-2px);
     }
 
     .phrase-box {
@@ -287,21 +291,29 @@
       line-height: 1.4;
     }
 
-    .phonetic-card {
-      background: var(--blue-bg);
-      border: 1px solid #bae6fd;
-      border-radius: 14px;
-      padding: 14px;
-      font-size: 0.85rem;
-      line-height: 1.45;
-      color: var(--blue-text);
-      margin-bottom: 14px;
+    /* Карточки причин */
+    .reason-box {
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 8px;
     }
 
-    .phonetic-card strong {
-      display: block;
-      margin-bottom: 4px;
+    .reason-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
       font-size: 0.9rem;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    .reason-text {
+      font-size: 0.85rem;
+      color: #334155;
+      line-height: 1.45;
     }
 
     .tip-card {
@@ -342,12 +354,60 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
     .nav-link.active {
       background: var(--primary);
       color: #ffffff;
       border-color: var(--primary);
+    }
+
+    /* Адаптация под мониторы (Desktop / Tablet) */
+    @media (min-width: 768px) {
+      .container {
+        max-width: 780px;
+        padding: 32px 24px 60px;
+      }
+      .hero-card {
+        padding: 36px 32px;
+        border-radius: 24px;
+        margin-bottom: 24px;
+      }
+      .arabic-hero {
+        font-size: 4.5rem;
+      }
+      .transcription {
+        font-size: 1.45rem;
+      }
+      .meaning {
+        font-size: 1.15rem;
+      }
+      .section-card {
+        padding: 24px 22px;
+        border-radius: 20px;
+        margin-bottom: 18px;
+      }
+      .section-title {
+        font-size: 1.2rem;
+      }
+      .math-arabic,
+      .math-sign {
+        height: 56px;
+      }
+      .math-arabic {
+        font-size: 2.1rem;
+      }
+      .math-sign {
+        font-size: 1.6rem;
+      }
+      .phrase-arabic {
+        font-size: 2.3rem;
+      }
+      .nav-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(15, 118, 110, 0.12);
+      }
     }
   </style>
 </head>
@@ -362,7 +422,7 @@
 
     <header class="hero-card">
       <div class="arabic-hero">ٱلْمُسْتَقِيمَ</div>
-      <div class="transcription">Аль-Мустакъӣма </div>
+      <div class="transcription">Аль-Мустак̣ӣма</div>
       <div class="meaning">«Прямой» / «Непоколебимый»</div>
     </header>
 
@@ -396,7 +456,7 @@
         <div class="step-item">
           <div class="step-badge">2</div>
           <div class="step-content">
-            <span class="arabic-inline">مُسْتَقِيم</span> (Мустакъӣм) — происходит от корня <span class="arabic-inline">ق - و - م</span> <br>со значением «стоять прямо, <br>без искривлений и отклонений».
+            <span class="arabic-inline">مُسْتَقِيم</span> (Мустак̣ӣм) — причастие, образованное от корня <span class="arabic-inline">ق - و - م</span> со значением «стоять прямо, без искривлений и отклонений».
           </div>
         </div>
       </div>
@@ -413,14 +473,33 @@
       <div class="qa-box">
         <div class="qa-question">Почему на конце фатха ( ـَ )?</div>
         <div class="qa-answer">
-          В арабском языке прилагательное-описание (<strong>Сыфат</strong>) работает как зеркало: оно полностью копирует падеж существительного, которое описывает. Так как слово <span class="arabic-inline">ٱلصِّرَاطَ</span> стояло с огласовкой <strong>фатха</strong> (винительный падеж прямого дополнения), то и слово <span class="arabic-inline">ٱلْمُسْتَقِيمَ</span> <br>в точности повторяет эту огласовку: <span class="nowrap"><em>«Аль-Мустакъӣм<strong style="color: var(--primary);">а</strong>»</em></span>.
+          В арабском языке определение (<strong>Сыфат</strong>) работает как зеркало: оно полностью копирует падеж существительного, которое описывает. Так как определяемое слово <span class="arabic-inline">ٱلصِّرَاطَ</span> стояло с огласовкой <strong>фатха</strong> (винительный падеж прямого дополнения), то и слово <span class="arabic-inline">ٱلْمُسْتَقِيمَ</span> в точности повторяет эту огласовку: <span class="nowrap"><em>«Аль-Мустак̣ӣм<strong style="color: var(--primary);">а</strong>»</em></span>.
+        </div>
+      </div>
+    </section>
+
+    <!-- Почему нет танвина? -->
+    <section class="section-card">
+      <h2 class="section-title">🚫 Почему нет танвина (-ан)?</h2>
+      
+      <div class="reason-box">
+        <div class="reason-header">Правило 1 • Несовместимость с артиклем (الـ)</div>
+        <div class="reason-text">
+          Само по себе слово <span class="arabic-inline">مُسْتَقِيم</span> является обычным трёхпадежным именем и в неопределённом состоянии принимает танвин: <span class="arabic-inline">مُسْتَقِيمًا</span> (<em>мустак̣ӣман</em> — «какой-то прямой»). Однако добавление артикля определённости <span class="arabic-inline">الـ</span> немедленно отменяет танвин: пишется одинарная фатха — <span class="arabic-inline">ٱلْمُسْتَقِيمَ</span>.
+        </div>
+      </div>
+
+      <div class="reason-box">
+        <div class="reason-header">Правило 2 • Согласование с определяемым словом (Сыфат)</div>
+        <div class="reason-text">
+          Поскольку главное слово <span class="arabic-inline">ٱلصِّرَاطَ</span> уже является определённым благодаря артиклю, его определение <span class="arabic-inline">ٱلْمُسْتَقِيمَ</span> обязано полностью повторить этот признак и тоже принять артикль <span class="arabic-inline">الـ</span>. В результате оба слова лишаются танвина и звучат в едином согласованном ритме.
         </div>
       </div>
     </section>
 
     <div class="tip-card">
-      <strong>💡 Что означает «Мустакъӣм»?</strong>
-      Это путь, который обладает тремя качествами одновременно: <br>он <b>кратчайший</b> (потому что прямая линия всегда короче кривой), <br>он <b>ровный</b> (без обрывов и опасных виражей) <br>и он <b>устремлён ровно вверх</b> к довольству Господа. <br>Сбиться с такого пути можно, лишь свернув в сторону.
+      <strong>💡 Что означает «Мустак̣ӣм»?</strong>
+      Это путь, который обладает тремя качествами одновременно: он <b>кратчайший</b> (потому что прямая линия всегда короче кривой), он <b>ровный</b> (без обрывов и опасных виражей) и он <b>устремлён ровно вверх</b> к довольству Господа. Сбиться с такого пути можно, лишь свернув в сторону.
     </div>
 
     <div class="nav-buttons">
