@@ -172,6 +172,14 @@
       gap: 6px;
     }
 
+    /* Стандартизация транскрипции с макронами */
+    .transcription {
+      font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+      font-feature-settings: "liga" 1, "calt" 1;
+      text-rendering: optimizeLegibility;
+    }
+      
+
     /* Адаптивные медиа-запросы для мониторов (Desktop / Tablet) */
     @media (min-width: 768px) {
       .container {
