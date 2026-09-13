@@ -5,10 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Слово ٱلدِّينِ — Простой разбор для начинающих</title>
 
-  <!-- Шрифты: Noto Naskh Arabic и Inter -->
+  <!-- Шрифты: Manrope и Noto Naskh Arabic -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@500;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@500;700&display=swap" rel="stylesheet">
 
   <style>
@@ -69,6 +68,7 @@
       border-radius: 8px;
       background: var(--card-bg);
       border: 1px solid var(--border-color);
+      transition: background 0.15s ease;
     }
 
     .back-btn:active {
@@ -230,6 +230,31 @@
       line-height: 1.4;
     }
 
+    /* Карточки причин */
+    .reason-box {
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 8px;
+    }
+
+    .reason-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    .reason-text {
+      font-size: 0.85rem;
+      color: #334155;
+      line-height: 1.45;
+    }
+
     /* Подсказки */
     .phonetic-card {
       background: var(--blue-bg);
@@ -287,12 +312,50 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
     .nav-link.active {
       background: var(--primary);
       color: #ffffff;
       border-color: var(--primary);
+    }
+
+    /* Адаптация под мониторы */
+    @media (min-width: 768px) {
+      .container {
+        max-width: 780px;
+        padding: 32px 24px 60px;
+      }
+      .hero-card {
+        padding: 36px 32px;
+        border-radius: 24px;
+        margin-bottom: 24px;
+      }
+      .arabic-hero {
+        font-size: 4.5rem;
+      }
+      .transcription {
+        font-size: 1.45rem;
+      }
+      .meaning {
+        font-size: 1.15rem;
+      }
+      .section-card {
+        padding: 24px 22px;
+        border-radius: 20px;
+        margin-bottom: 18px;
+      }
+      .section-title {
+        font-size: 1.2rem;
+      }
+      .phrase-arabic {
+        font-size: 2.3rem;
+      }
+      .nav-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(15, 118, 110, 0.12);
+      }
     }
   </style>
 </head>
@@ -332,7 +395,7 @@
         <div class="step-item">
           <div class="step-badge">2</div>
           <div class="step-content">
-            В отличие от предыдущих двух слов связки, здесь присутствует определённый артикль <span class="arabic-inline">ٱلـ</span>, так как это конкретный, известный День полного расчёта.
+            В отличие от предыдущих двух слов связки (<span class="arabic-inline">مَالِكِ</span> и <span class="arabic-inline">يَوْمِ</span>), здесь присутствует определённый артикль <span class="arabic-inline">ٱلـ</span>, так как речь идёт о конкретном, известном Дне полного расчёта.
           </div>
         </div>
       </div>
@@ -345,7 +408,26 @@
       <div class="qa-box">
         <div class="qa-question">Правило зависимого слова в идафе:</div>
         <div class="qa-answer">
-          Так как слово <span class="arabic-inline">ٱلدِّينِ</span> стоит вторым элементом в связке владения (отвечает на вопрос <em>«чего?»</em>), оно принимает огласовку <strong>кясра ( ـِ )</strong>: <span class="nowrap"><em>«йавми-д-дӣн<strong style="color: var(--primary);">и</strong>»</em></span>.
+          Так как слово <span class="arabic-inline">ٱلدِّينِ</span> стоит вторым элементом в связке владения (<em>Мудаф илейхи</em> — отвечает на вопрос <em>«чего?»</em>), оно принимает падеж джарр с огласовкой <strong>кясра ( ـِ )</strong>: <span class="nowrap"><em>«йавми-д-дӣн<strong style="color: var(--primary);">и</strong>»</em></span>.
+        </div>
+      </div>
+    </section>
+
+    <!-- Почему нет танвина? -->
+    <section class="section-card">
+      <h2 class="section-title">🚫 Почему нет танвина (-ин / -ун)?</h2>
+      
+      <div class="reason-box">
+        <div class="reason-header">Правило несовместимости с артиклем (الـ)</div>
+        <div class="reason-text">
+          Без артикля это существительное имеет полноценный танвин: <span class="arabic-inline">دِينٌ</span> (<em>дӣнун</em> — «какой-то долг/суд/религия»). Однако при добавлении артикля определённости <span class="arabic-inline">الـ</span> танвин <strong>всегда исчезает</strong>: пишется одна кясра <span class="arabic-inline">ٱلدِّينِ</span> вместо <span class="arabic-inline">دِينٍ</span> (<em>дӣнин</em>).
+        </div>
+      </div>
+
+      <div class="reason-box">
+        <div class="reason-header">Разница с первыми словами связки (малики / йавми)</div>
+        <div class="reason-text">
+          В словах <span class="arabic-inline">مَالِكِ</span> и <span class="arabic-inline">يَوْمِ</span> танвин отсутствовал из-за их роли первого слова в идафе (<em>Мудаф</em>). Слово же <span class="arabic-inline">ٱلدِّينِ</span> стоит в конце цепочки и могло бы иметь танвин, но его снимает <strong>определённый артикль <span class="arabic-inline">الـ</span></strong>, который делает всю конструкцию конкретной.
         </div>
       </div>
     </section>
