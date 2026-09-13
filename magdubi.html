@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Слово ٱلْمَغْضُوبِ — Простой разбор для начинающих</title>
 
-  <!-- Шрифты: Noto Naskh Arabic и Inter -->
+  <!-- Шрифты: Noto Naskh Arabic и Inter / Manrope -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@500;700&display=swap" rel="stylesheet">
@@ -293,24 +293,38 @@
       line-height: 1.4;
     }
 
-    /* Подсказки */
-    .phonetic-card {
-      background: var(--blue-bg);
-      border: 1px solid #bae6fd;
-      border-radius: 14px;
-      padding: 14px;
-      font-size: 0.85rem;
-      line-height: 1.45;
-      color: var(--blue-text);
-      margin-bottom: 14px;
+    /* Сравнение с танвином */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 10px;
     }
 
-    .phonetic-card strong {
-      display: block;
+    .compare-card {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 10px 8px;
+      text-align: center;
+    }
+
+    .compare-arabic {
+      direction: rtl;
+      font-family: 'Noto Naskh Arabic', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      line-height: 1.3;
       margin-bottom: 4px;
-      font-size: 0.9rem;
     }
 
+    .compare-label {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      line-height: 1.25;
+    }
+
+    /* Подсказки */
     .tip-card {
       background: var(--accent-bg);
       border: 1px solid var(--accent-border);
@@ -426,6 +440,29 @@
         <div class="qa-question">Второе слово связки владения (Идафа):</div>
         <div class="qa-answer">
           Слово присоединено к предыдущему слову <span class="arabic-inline">غَيْرِ</span> и отвечает на вопрос <em>«кого?»</em>. В роли зависимого слова (<em>мудаф илейхи</em>) оно принимает родительный падеж и огласовку <strong>кясра ( ـِ )</strong> на конце: <span class="nowrap"><em>«гойри-ль-магду́б<strong style="color: var(--primary);">и</strong>»</em></span>.
+        </div>
+      </div>
+    </section>
+
+    <!-- НОВЫЙ БЛОК: Почему нет танвина -->
+    <section class="section-card">
+      <h2 class="section-title">🚫 Почему здесь нет танвина (ـٍ)?</h2>
+      
+      <div class="qa-box" style="border-left-color: #0284c7; background: #f0f9ff;">
+        <div class="qa-question" style="color: #0369a1;">Золотое правило арабского языка:</div>
+        <div class="qa-answer">
+          Артикль определённости <span class="arabic-inline">ٱلْـ</span> и <strong>танвин</strong> (двойная огласовка) никогда не встречаются в одном слове. Появление артикля автоматически убирает танвин.
+        </div>
+      </div>
+
+      <div class="compare-grid">
+        <div class="compare-card">
+          <div class="compare-arabic" style="color: var(--part-art);">ٱلْمَغْضُوبِ</div>
+          <div class="compare-label">Есть <span class="arabic-inline" style="font-size:0.95rem;">ٱلْـ</span> → <strong>одна кясра</strong> (определённое состояние)</div>
+        </div>
+        <div class="compare-card">
+          <div class="compare-arabic" style="color: #64748b;">مَغْضُوبٍ</div>
+          <div class="compare-label">Нет <span class="arabic-inline" style="font-size:0.95rem;">ٱلْـ</span> → <strong>танвин-кясра</strong> (неопределённое состояние)</div>
         </div>
       </div>
     </section>
