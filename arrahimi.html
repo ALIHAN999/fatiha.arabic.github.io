@@ -312,7 +312,14 @@
       border-color: var(--primary);
     }
 
-    /* Адаптация под мониторы */
+    /* Стандартизация транскрипции с макронами */
+    .transcription {
+      font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+      font-feature-settings: "liga" 1, "calt" 1;
+      text-rendering: optimizeLegibility;
+    }
+    
+    /* Адаптивные медиа-запросы для мониторов (Desktop / Tablet) */
     @media (min-width: 768px) {
       .container {
         max-width: 780px;
@@ -339,6 +346,21 @@
       }
       .section-title {
         font-size: 1.2rem;
+      }
+      .phrase-arabic {
+        font-size: 2.3rem;
+      }
+      .math-arabic {
+        font-size: 2.2rem;
+        height: 52px;
+      }
+      .math-sign {
+        font-size: 1.6rem;
+        height: 52px;
+      }
+      .nav-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(15, 118, 110, 0.12);
       }
     }
   </style>
