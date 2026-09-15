@@ -510,12 +510,6 @@
       vkBridge.send('VKWebAppInit')
         .catch((error) => console.error('VKWebAppInit Error:', error));
 
-      const interactiveElements = document.querySelectorAll('.back-btn, .nav-link');
-      interactiveElements.forEach((el) => {
-        el.addEventListener('click', () => {
-          vkBridge.send('VKWebAppTapticImpactOccurred', { style: 'light' }).catch(() => {});
-        });
-      });
     }
   </script>
 </body>
