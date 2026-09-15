@@ -353,9 +353,22 @@
         const parser = new DOMParser();
         const newDoc = parser.parseFromString(htmlText, 'text/html');
     
-        // Обновляем заголовок и контент
+        // 1. Обновляем title
         document.title = newDoc.title;
-        
+    
+        // 2. Обновляем стили: ищем динамический стиль или создаем его
+        const newStyle = newDoc.querySelector('head style');
+        if (newStyle) {
+          let currentDynamicStyle = document.getElementById('dynamic-page-style');
+          if (!currentDynamicStyle) {
+            currentDynamicStyle = document.createElement('style');
+            currentDynamicStyle.id = 'dynamic-page-style';
+            document.head.appendChild(currentDynamicStyle);
+          }
+          currentDynamicStyle.textContent = newStyle.textContent;
+        }
+    
+        // 3. Обновляем контент контейнера
         const newContent = newDoc.querySelector('.container');
         const currentContent = document.querySelector('.container');
     
@@ -363,16 +376,16 @@
           currentContent.innerHTML = newContent.innerHTML;
           window.scrollTo(0, 0);
           
-          // Сохраняем состояние в истории для работы кнопки "Назад"
+          // История для кнопки "Назад"
           history.pushState({ path: url }, '', url);
     
-          // Виброотклик через VK Bridge при переходе
+          // Виброотклик VK Bridge
           if (window.vkBridge) {
             vkBridge.send('VKWebAppTapticImpactOccurred', { style: 'light' }).catch(() => {});
           }
         }
       } catch (err) {
-        // Резервный переход внутри WebView, если fetch заблокирован локально
+        // Если fetch заблокирован локально (file://)
         window.location.href = url;
       }
     }
