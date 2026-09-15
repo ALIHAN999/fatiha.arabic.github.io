@@ -456,6 +456,67 @@
         });
       });
     }
+
+    // Перехват кликов по внутренним ссылкам для предотвращения открытия браузера
+    document.addEventListener('click', (e) => {
+      const targetLink = e.target.closest('a');
+      if (!targetLink) return;
+    
+      const href = targetLink.getAttribute('href');
+    
+      // Игнорируем якоря, внешние протоколы и пустые ссылки
+      if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto:')) {
+        return;
+      }
+    
+      e.preventDefault();
+    
+      // Загружаем страницу без перезагрузки браузера
+      loadPage(href);
+    });
+    
+    async function loadPage(url) {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error('Ошибка загрузки');
+        
+        const htmlText = await response.text();
+        const parser = new DOMParser();
+        const newDoc = parser.parseFromString(htmlText, 'text/html');
+    
+        // Обновляем заголовок и контент
+        document.title = newDoc.title;
+        
+        const newContent = newDoc.querySelector('.container');
+        const currentContent = document.querySelector('.container');
+    
+        if (newContent && currentContent) {
+          currentContent.innerHTML = newContent.innerHTML;
+          window.scrollTo(0, 0);
+          
+          // Сохраняем состояние в истории для работы кнопки "Назад"
+          history.pushState({ path: url }, '', url);
+    
+          // Виброотклик через VK Bridge при переходе
+          if (window.vkBridge) {
+            vkBridge.send('VKWebAppTapticImpactOccurred', { style: 'light' }).catch(() => {});
+          }
+        }
+      } catch (err) {
+        // Резервный переход внутри WebView, если fetch заблокирован локально
+        window.location.href = url;
+      }
+    }
+    
+    // Обработка кнопки «Назад» на телефоне
+    window.addEventListener('popstate', (e) => {
+      if (e.state && e.state.path) {
+        loadPage(e.state.path);
+      } else {
+        location.reload();
+      }
+    });
+    
   </script>
 </body>
 </html>
