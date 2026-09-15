@@ -318,12 +318,7 @@
           console.error('Ошибка инициализации VK Bridge:', error);
         });
 
-      // Добавление приятного тактильного отклика (Haptic Feedback) на клики по словам
-      document.querySelectorAll('.word-link').forEach(link => {
-        link.addEventListener('click', () => {
-          vkBridge.send('VKWebAppTapticImpactOccurred', { style: 'light' }).catch(() => {});
-        });
-      });
+      
     }
 
     // Перехват кликов по внутренним ссылкам для предотвращения открытия браузера
@@ -379,10 +374,7 @@
           // История для кнопки "Назад"
           history.pushState({ path: url }, '', url);
     
-          // Виброотклик VK Bridge
-          if (window.vkBridge) {
-            vkBridge.send('VKWebAppTapticImpactOccurred', { style: 'light' }).catch(() => {});
-          }
+          
         }
       } catch (err) {
         // Если fetch заблокирован локально (file://)
