@@ -414,13 +414,6 @@
       vkBridge.send('VKWebAppInit')
         .catch((error) => console.error('VKWebAppInit Error:', error));
 
-      // Тактильный отклик при переходе назад и вперед по словам
-      const interactiveElements = document.querySelectorAll('.back-btn, .nav-link');
-      interactiveElements.forEach((el) => {
-        el.addEventListener('click', () => {
-          vkBridge.send('VKWebAppTapticImpactOccurred', { style: 'light' }).catch(() => {});
-        });
-      });
     }
   </script>
 </body>
