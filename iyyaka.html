@@ -2,10 +2,11 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Viewport-fit=cover для корректного отображения внутри мобильного клиента VK -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-select=no, viewport-fit=cover">
   <title>Слово إِيَّاكَ — Простой разбор для начинающих</title>
 
-  <!-- Шрифты: Noto Naskh Arabic и Inter -->
+  <!-- Шрифты: Noto Naskh Arabic, Inter и Manrope -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@500;700&display=swap" rel="stylesheet">
@@ -43,7 +44,12 @@
       background-color: var(--bg-color);
       color: var(--text-main);
       line-height: 1.5;
-      padding-bottom: 40px;
+      /* Безопасные отступы под системные панели и вырезы смартфона */
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: calc(40px + env(safe-area-inset-bottom, 0px));
+      padding-left: env(safe-area-inset-left, 0px);
+      padding-right: env(safe-area-inset-right, 0px);
+      min-height: 100vh;
     }
 
     .container {
@@ -71,10 +77,12 @@
       border-radius: 8px;
       background: var(--card-bg);
       border: 1px solid var(--border-color);
+      transition: background-color 0.15s ease, transform 0.1s ease;
     }
 
     .back-btn:active {
       background: var(--primary-light);
+      transform: scale(0.97);
     }
 
     .ayah-indicator {
@@ -109,6 +117,8 @@
       font-weight: 700;
       color: var(--text-main);
       margin-bottom: 4px;
+      font-feature-settings: "liga" 1, "calt" 1;
+      text-rendering: optimizeLegibility;
     }
 
     .meaning {
@@ -284,24 +294,7 @@
       line-height: 1.4;
     }
 
-    /* Подсказки */
-    .phonetic-card {
-      background: var(--blue-bg);
-      border: 1px solid #bae6fd;
-      border-radius: 14px;
-      padding: 14px;
-      font-size: 0.85rem;
-      line-height: 1.45;
-      color: var(--blue-text);
-      margin-bottom: 14px;
-    }
-
-    .phonetic-card strong {
-      display: block;
-      margin-bottom: 4px;
-      font-size: 0.9rem;
-    }
-
+    /* Карточка нюанса */
     .tip-card {
       background: var(--accent-bg);
       border: 1px solid var(--accent-border);
@@ -341,6 +334,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: transform 0.1s ease, background-color 0.15s ease;
     }
 
     .nav-link.active {
@@ -349,14 +343,10 @@
       border-color: var(--primary);
     }
 
-    /* Стандартизация транскрипции с макронами */
-    .transcription {
-      font-family: 'Manrope', system-ui, -apple-system, sans-serif;
-      font-feature-settings: "liga" 1, "calt" 1;
-      text-rendering: optimizeLegibility;
+    .nav-link:active {
+      transform: scale(0.97);
     }
     
-    /* Адаптивные медиа-запросы для мониторов (Desktop / Tablet) */
     @media (min-width: 768px) {
       .container {
         max-width: 780px;
@@ -367,41 +357,27 @@
         border-radius: 24px;
         margin-bottom: 24px;
       }
-      .arabic-hero {
-        font-size: 4.5rem;
-      }
-      .transcription {
-        font-size: 1.45rem;
-      }
-      .meaning {
-        font-size: 1.15rem;
-      }
+      .arabic-hero { font-size: 4.5rem; }
+      .transcription { font-size: 1.45rem; }
+      .meaning { font-size: 1.15rem; }
       .section-card {
         padding: 24px 22px;
         border-radius: 20px;
         margin-bottom: 18px;
       }
-      .section-title {
-        font-size: 1.2rem;
-      }
-      .phrase-arabic {
-        font-size: 2.3rem;
-      }
-      .math-arabic {
-        font-size: 2.2rem;
-        height: 52px;
-      }
-      .math-sign {
-        font-size: 1.6rem;
-        height: 52px;
-      }
+      .section-title { font-size: 1.2rem; }
+      .phrase-arabic { font-size: 2.3rem; }
+      .math-arabic { font-size: 2.2rem; height: 52px; }
+      .math-sign { font-size: 1.6rem; height: 52px; }
       .nav-link:hover {
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(15, 118, 110, 0.12);
       }
     }
-    
   </style>
+
+  <!-- Подключение VK Bridge -->
+  <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
 </head>
 <body>
 
@@ -488,5 +464,21 @@
 
   </div>
 
+  <!-- Скрипт VK Bridge -->
+  <script>
+    if (window.vkBridge) {
+      // Инициализация сервиса внутри клиента VK
+      vkBridge.send('VKWebAppInit')
+        .catch((error) => console.error('VKWebAppInit Error:', error));
+
+      // Тактильная виброотдача при кликах по кнопкам навигации
+      const interactiveElements = document.querySelectorAll('.back-btn, .nav-link');
+      interactiveElements.forEach((el) => {
+        el.addEventListener('click', () => {
+          vkBridge.send('VKWebAppTapticImpactOccurred', { style: 'light' }).catch(() => {});
+        });
+      });
+    }
+  </script>
 </body>
 </html>
