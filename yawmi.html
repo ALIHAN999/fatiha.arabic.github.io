@@ -397,14 +397,6 @@
       // Инициализация сервиса внутри клиента VK
       vkBridge.send('VKWebAppInit')
         .catch((error) => console.error('VKWebAppInit Error:', error));
-
-      // Тактильная отдача при нажатии на интерактивные кнопки
-      const interactiveElements = document.querySelectorAll('.back-btn, .nav-link');
-      interactiveElements.forEach((el) => {
-        el.addEventListener('click', () => {
-          vkBridge.send('VKWebAppTapticImpactOccurred', { style: 'light' }).catch(() => {});
-        });
-      });
     }
   </script>
 </body>
